@@ -1,0 +1,17 @@
+h1 {
+  text-align: center; }
+
+.game-field {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 0;
+  background: lightblue;
+  max-width: 600px;
+  margin: 0 auto; }
+
+.square {
+  width: 25%;
+  padding-bottom: 25%;
+  background: peachpuff;
+  border: 1px solid maroon;
+  box-sizing: border-box; }

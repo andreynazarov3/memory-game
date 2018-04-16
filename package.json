@@ -1,0 +1,27 @@
+{
+  "name": "memory-game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.7.0",
+    "node-sass": "^4.8.3"
+  },
+  "scripts": {    
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "./node_modules/.bin/node-sass --watch scss --output css --output-style extended"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andreynazarov3/memory-game.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andreynazarov3/memory-game/issues"
+  },
+  "homepage": "https://github.com/andreynazarov3/memory-game#readme"
+}
