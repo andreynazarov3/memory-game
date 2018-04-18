@@ -24,7 +24,7 @@ const gameStats = {
   lastOpenedCardId: null,
   lastOpenedCardUid: null,
 };
-const pickColors = (allColors, numColorsToPick = 8) => {
+const pickColors = (allColors, numColorsToPick = 2) => {
   const pickedColors = [];
   for (let i = 0; i < numColorsToPick; i += 1) {
     const index = Math.floor(Math.random() * allColors.length);
@@ -122,6 +122,7 @@ const createNewTable = gameField => {
 const makeNewGame = (gameField, timerID) => {
   gameStats.reset();
   clearInterval(timerID);
+  makeRatingAndTime();
   Array.from(gameField.children).forEach(item => {
     item.classList.remove('visible');
   });
@@ -173,7 +174,6 @@ const main = () => {
         const { lastOpenedCard, lastOpenedCardId, cards, numCardsOpen, stepsCount } = gameStats;
         if (target.matches('.square')) {
           makeRatingAndTime();
-          gameStats.addStep();
           // star timer if first touch
           if (stepsCount === 0) {
             startTimer();
@@ -188,7 +188,7 @@ const main = () => {
               gameStats.lastOpenedCardUid = uid;
               gameStats.numCardsOpen += 1;
               target.classList.toggle('visible');
-
+              gameStats.addStep();
               break;
             case 1:
               if (lastOpenedCard === target || cards[id].win) break;
@@ -196,7 +196,7 @@ const main = () => {
                 gameStats.cards[id].win = true;
                 gameStats.numCardsOpen = 0;
                 target.classList.toggle('visible');
-
+                gameStats.addStep();
                 if (checkIfWinner() === true) {
                   clearInterval(timerID);
                   setTimeout(() => {
@@ -206,7 +206,7 @@ const main = () => {
               } else {
                 gameStats.numCardsOpen += 1;
                 target.classList.toggle('visible');
-
+                gameStats.addStep();
                 setTimeout(() => {
                   target.classList.toggle('visible');
                   lastOpenedCard.classList.toggle('visible');
