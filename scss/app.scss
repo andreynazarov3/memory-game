@@ -4,32 +4,38 @@ h1 {
 .game-field {
   display: flex;
   flex-wrap: wrap;
-  flex: 0;  
+  flex: 0;
   max-width: 600px;
   margin: 0 auto;
 }
 .game-panel {
-  text-align: center;
   margin-bottom: 50px;
-  .steps {
-    margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+  > * {
+    margin-right: 10px;
+    &:last-child {
+      margin: 0;
+    }
   }
 }
 .square {
   position: relative;
   width: calc(25% - 10px);
   padding-bottom: calc(25% - 10px);
-  border: 5px solid white;  
+  border: 5px solid white;
   -webkit-perspective: 800;
   cursor: pointer;
-  &.visible {    
+  &.visible {
     .square__wrapper {
       transform: rotateX(-180deg);
     }
   }
   &__wrapper {
     transition: 300ms ease;
-    transform-style: preserve-3d;    
+    transform-style: preserve-3d;
   }
   div {
     position: absolute;
@@ -50,7 +56,7 @@ h1 {
   }
 }
 
-@import "star";
+@import 'star';
 
 .star-rating {
   text-align: center;
@@ -63,27 +69,27 @@ h1 {
 }
 .popup-overlay {
   position: fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background: rgba(0,0,0,0.8);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding:20px;
+  padding: 20px;
   box-sizing: border-box;
   &.hidden {
     display: none;
   }
 }
-.popup {    
+.popup {
   max-width: 100%;
   width: 500px;
   height: 300px;
   margin: 0 auto;
   background: white;
-  border: 1px solid black;  
+  border: 1px solid black;
   display: flex;
   flex-direction: column;
   justify-content: center;

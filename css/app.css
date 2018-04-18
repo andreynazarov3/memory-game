@@ -9,10 +9,15 @@ h1 {
   margin: 0 auto; }
 
 .game-panel {
-  text-align: center;
+  margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 50px; }
-  .game-panel .steps {
-    margin-bottom: 20px; }
+  .game-panel > * {
+    margin-right: 10px; }
+    .game-panel > *:last-child {
+      margin: 0; }
 
 .square {
   position: relative;

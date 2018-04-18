@@ -5,8 +5,9 @@ const gameStats = {
   startTime: 0,
   stepsCount: 0,
   reset() {
+    document.querySelector('.steps').innerHTML = '0 steps';
+    document.querySelector('.timer').innerHTML = '0 seconds';
     this.stepsCount = 0;
-    document.querySelector('.steps').innerHTML = `${this.stepsCount} steps`;
     this.cards = [];
     this.numCardsOpen = 0;
     this.lastOpenedCard = null;
@@ -57,22 +58,28 @@ const randomizeItems = gameField => {
       `;
   }
 };
-let startTime;
-let endTime;
 
 const startTimer = () => {
-  startTime = new Date();
-  gameStats.startTime = startTime;
+  gameStats.startTime = new Date();
 };
 
 const getTimeElapsed = () => {
-  endTime = new Date();
-  let timeDiff = endTime - startTime; //in ms
+  const endTime = new Date();
+  let timeDiff = endTime - gameStats.startTime;
   // strip the ms
   timeDiff /= 1000;
   // get seconds
   return Math.round(timeDiff);
 };
+
+const startTimerDisplay = () => {
+  const timer = document.querySelector('.timer');
+  const timerId = setInterval(() => {
+    timer.innerHTML = `${getTimeElapsed()} seconds`;
+  }, 1000);
+  return timerId;
+};
+
 const makeRatingAndTime = () => {
   // stars rating
   let starsRating = 1;
@@ -87,27 +94,34 @@ const makeRatingAndTime = () => {
   } else {
     starsRating = 1;
   }
-  console.log(starsRating);
-  const stars = document.querySelectorAll('.star');
-  stars.forEach((star, index) => {
-    star.classList.add('grey');
-    if (index < starsRating) {
-      star.classList.remove('grey');
-    }
-  });
+  const starsInPopup = document.querySelectorAll('.star-rating .star');
+  const starsInPanel = document.querySelectorAll('.game-panel .star');
+  const updateStarsRating = starsArray => {
+    starsArray.forEach((star, index) => {
+      star.classList.add('grey');
+      if (index < starsRating) {
+        star.classList.remove('grey');
+      }
+    });
+  };
+  updateStarsRating(starsInPopup);
+  updateStarsRating(starsInPanel);
+
   getTimeElapsed();
   const timeRating = document.querySelector('.time');
   timeRating.innerHTML = `${getTimeElapsed()} seconds`;
 };
+
 const createNewTable = gameField => {
-  COLORS = pickColors(ALL_COLORS.slice());
+  COLORS = pickColors(ALL_COLORS.slice(), 2);
   // clear game field
   gameField.innerHTML = '';
   // fill with new
   randomizeItems(gameField);
 };
-const makeNewGame = gameField => {
+const makeNewGame = (gameField, timerID) => {
   gameStats.reset();
+  clearInterval(timerID);
   Array.from(gameField.children).forEach(item => {
     item.classList.remove('visible');
   });
@@ -134,6 +148,7 @@ const showPopupOverlay = overlay => {
 };
 
 const main = () => {
+  let timerID;
   const gameField = document.querySelector('.game-field');
   const overlay = document.querySelector('.popup-overlay');
   const newGameButton = document.querySelectorAll('.new-game');
@@ -145,7 +160,7 @@ const main = () => {
   newGameButton.forEach(button => {
     button.addEventListener('click', () => {
       hidePopupOverlay(overlay);
-      makeNewGame(gameField);
+      makeNewGame(gameField, timerID);
     });
   });
   createNewTable(gameField);
@@ -157,9 +172,12 @@ const main = () => {
       for (let { target } = e; target && target !== this; target = target.parentNode) {
         const { lastOpenedCard, lastOpenedCardId, cards, numCardsOpen, stepsCount } = gameStats;
         if (target.matches('.square')) {
+          makeRatingAndTime();
+          gameStats.addStep();
           // star timer if first touch
           if (stepsCount === 0) {
             startTimer();
+            timerID = startTimerDisplay();
           }
           const { id, uid } = target.dataset;
           switch (numCardsOpen) {
@@ -170,7 +188,7 @@ const main = () => {
               gameStats.lastOpenedCardUid = uid;
               gameStats.numCardsOpen += 1;
               target.classList.toggle('visible');
-              gameStats.addStep();
+
               break;
             case 1:
               if (lastOpenedCard === target || cards[id].win) break;
@@ -178,8 +196,9 @@ const main = () => {
                 gameStats.cards[id].win = true;
                 gameStats.numCardsOpen = 0;
                 target.classList.toggle('visible');
-                gameStats.addStep();
+
                 if (checkIfWinner() === true) {
+                  clearInterval(timerID);
                   setTimeout(() => {
                     showPopupOverlay(overlay);
                   }, CARD_FLIP_TIME);
@@ -187,7 +206,7 @@ const main = () => {
               } else {
                 gameStats.numCardsOpen += 1;
                 target.classList.toggle('visible');
-                gameStats.addStep();
+
                 setTimeout(() => {
                   target.classList.toggle('visible');
                   lastOpenedCard.classList.toggle('visible');
