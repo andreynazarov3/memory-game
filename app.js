@@ -172,7 +172,7 @@ const main = () => {
       // event delegation pattern
       for (let { target } = e; target && target !== this; target = target.parentNode) {
         const { lastOpenedCard, lastOpenedCardId, cards, numCardsOpen, stepsCount } = gameStats;
-        if (target.matches('.square')) {
+        if (target && target.matches('.square')) {
           makeRatingAndTime();
           // star timer if first touch
           if (stepsCount === 0) {
@@ -182,7 +182,7 @@ const main = () => {
           const { id, uid } = target.dataset;
           switch (numCardsOpen) {
             case 0:
-              if (cards[id].win) break;
+              if (cards && cards[id] && cards[id].win) break;
               gameStats.lastOpenedCard = target;
               gameStats.lastOpenedCardId = id;
               gameStats.lastOpenedCardUid = uid;
