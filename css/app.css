@@ -15,9 +15,10 @@ h1 {
   justify-content: center;
   margin-bottom: 50px; }
   .game-panel > * {
-    margin-right: 10px; }
+    margin-right: 10px;
+    margin-bottom: 20px; }
     .game-panel > *:last-child {
-      margin: 0; }
+      margin-right: 0; }
 
 .square {
   position: relative;
