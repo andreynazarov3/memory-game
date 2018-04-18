@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/css" href="../css/app.css"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ns1="http://sozi.baierouge.fr" xmlns:cc="http://creativecommons.org/ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:dc="http://purl.org/dc/elements/1.1/" id="svg2" xml:space="preserve" viewBox="0 0 45.05 41.35" version="1.1" inkscape:version="0.91 r13725">
+  <g id="g10" transform="matrix(1.25 0 0 -1.25 0 41.35)">
+    <g id="g12">
+      <path class="path" id="star" style="fill: #ffe94b; fill-rule:evenodd;" d="m36.039 20.799-7.437-8.438 2-11.961-11.481 7.481-12.281-7.883 2.32 12.844-9.16 6.316 12.52 1.961 4.882 11.961 6.879-10.762 11.758-1.519z" inkscape:connector-curvature="0"/>
+    </g>
+  </g>
+</svg>

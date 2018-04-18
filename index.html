@@ -6,30 +6,38 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
   <link rel="stylesheet" href="css/app.css">
+  <script src="colors.js"></script>
+  <script src="app.js"></script>
   <title>Memory Game</title>
 </head>
 <body>
   <h1>Memory Game</h1>
-  <div class="game-stats">
-
+  <div class="game-panel">
+      <div class="steps">0 steps</div>
+      <button class="new-game">New Game</button>
   </div>    
   <div class="game-field">
-      <div class="square"></div>
-      <div class="square"></div>
-      <div class="square"></div>
-      <div class="square"></div>
-      <div class="square"></div>
-      <div class="square"></div>
-      <div class="square"></div>
-      <div class="square"></div>
-      <div class="square"></div>
-      <div class="square"></div>
-      <div class="square"></div>
-      <div class="square"></div>
-      <div class="square"></div>
-      <div class="square"></div>
-      <div class="square"></div>
-      <div class="square"></div>
   </div>
+  <div class="popup-overlay hidden">
+  <div class="popup">
+    <h1>You win!</h1>
+    <button class="new-game">New Game</button>
+    <div class="star-rating">
+      <h2>Your score:</h2>
+      <div class="stars">
+        <div class="star grey"></div>
+        <div class="star grey"></div>
+        <div class="star grey"></div>
+        <div class="star grey"></div>
+        <div class="star grey"></div>
+      </div></div>      
+    <div class="time-rating">
+        <h2>Time spent:</h2>
+        <div class="time">
+            00m:40s
+        </div>
+      </div>
+  </div>
+</div>
 </body>
 </html>
