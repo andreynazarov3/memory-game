@@ -13,7 +13,8 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 50px; }
+  margin-bottom: 50px;
+  flex-wrap: wrap; }
   .game-panel > * {
     margin-right: 10px;
     margin-bottom: 20px; }
