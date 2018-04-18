@@ -84,15 +84,13 @@ const makeRatingAndTime = () => {
   // stars rating
   let starsRating = 1;
   if (gameStats.stepsCount < 20) {
-    starsRating = 5;
-  } else if (gameStats.stepsCount < 30) {
-    starsRating = 4;
-  } else if (gameStats.stepsCount < 40) {
     starsRating = 3;
-  } else if (gameStats.stepsCount < 50) {
+  } else if (gameStats.stepsCount < 30) {
     starsRating = 2;
-  } else {
+  } else if (gameStats.stepsCount < 40) {
     starsRating = 1;
+  } else {
+    starsRating = 0;
   }
   const starsInPopup = document.querySelectorAll('.star-rating .star');
   const starsInPanel = document.querySelectorAll('.game-panel .star');
