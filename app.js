@@ -147,7 +147,9 @@ const showPopupOverlay = overlay => {
   makeRatingAndTime();
   overlay.classList.remove('hidden');
 };
-
+const isFunction = functionToCheck => {
+  return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';
+};
 const main = () => {
   let timerID;
   const gameField = document.querySelector('.game-field');
@@ -172,7 +174,7 @@ const main = () => {
       // event delegation pattern
       for (let { target } = e; target && target !== this; target = target.parentNode) {
         const { lastOpenedCard, lastOpenedCardId, cards, numCardsOpen, stepsCount } = gameStats;
-        if (target && target.matches('.square')) {
+        if (target && isFunction(target.matches) && target.matches('.square')) {
           makeRatingAndTime();
           // star timer if first touch
           if (stepsCount === 0) {
