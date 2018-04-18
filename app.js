@@ -24,7 +24,7 @@ const gameStats = {
   lastOpenedCardId: null,
   lastOpenedCardUid: null,
 };
-const pickColors = (allColors, numColorsToPick = 2) => {
+const pickColors = (allColors, numColorsToPick = 8) => {
   const pickedColors = [];
   for (let i = 0; i < numColorsToPick; i += 1) {
     const index = Math.floor(Math.random() * allColors.length);
