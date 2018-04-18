@@ -113,7 +113,7 @@ const makeRatingAndTime = () => {
 };
 
 const createNewTable = gameField => {
-  COLORS = pickColors(ALL_COLORS.slice(), 2);
+  COLORS = pickColors(ALL_COLORS.slice());
   // clear game field
   gameField.innerHTML = '';
   // fill with new
