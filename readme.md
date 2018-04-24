@@ -2,6 +2,10 @@
 
 This is native JS game. It can help to find out and memorize CSS named colors.
 
+## Demo
+
+You can try it here: [CSS Memory Game](https://css-memory-game.herokuapp.com/)
+
 ## Installation
 
 The repository already has alll needed files. Just copy these files to any directory and game will be working from index.html file. There's also index.php file that redirects to index.html. It is needed for services like heroku.
