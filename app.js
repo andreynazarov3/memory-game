@@ -145,9 +145,9 @@ const showPopupOverlay = overlay => {
   makeRatingAndTime();
   overlay.classList.remove('hidden');
 };
-const isFunction = functionToCheck => {
-  return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';
-};
+const isFunction = functionToCheck =>
+  functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';
+
 const main = () => {
   let timerID;
   const gameField = document.querySelector('.game-field');
@@ -187,8 +187,7 @@ const main = () => {
               gameStats.lastOpenedCardId = id;
               gameStats.lastOpenedCardUid = uid;
               gameStats.numCardsOpen += 1;
-              target.classList.toggle('visible');
-              gameStats.addStep();
+              target.classList.toggle('visible');              
               break;
             case 1:
               if (lastOpenedCard === target || cards[id].win) break;
